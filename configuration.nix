@@ -10,6 +10,7 @@
       ./hardware-configuration.nix
     ];
 
+  
   # Use the GRUB 2 boot loader.
   boot.loader.grub.enable = true;
   boot.loader.grub.version = 2;
@@ -19,17 +20,21 @@
   # Define on which hard drive you want to install Grub.
   boot.loader.grub.device = "/dev/sda"; # or "nodev" for efi only
 
-    networking.hostName = "nixos"; # Define your hostname.
+  
+  networking.hostName = "nixos"; # Define your hostname.
   # Pick only one of the below networking options.
   # networking.wireless.enable = true;  # Enables wireless support via wpa_supplicant.
   networking.networkmanager.enable = true;  # Easiest to use and most distros use this by default.
 
+
   # Set your time zone.
   time.timeZone = "America/Manaus";
+
 
   # Configure network proxy if necessary
   # networking.proxy.default = "http://user:password@proxy:port/";
   # networking.proxy.noProxy = "127.0.0.1,localhost,internal.domain";
+
 
   # Select internationalisation properties.
   i18n.defaultLocale = "en_US.UTF-8";
@@ -39,10 +44,9 @@
   # useXkbConfig = true; # use xkbOptions in tty.
   };
 
+  
   # Enable the X11 windowing system.
   services.xserver.enable = true;
-
-
   # Configure keymap in X11
   services.xserver.layout = "br";
   # services.xserver.xkbOptions = {
@@ -62,30 +66,37 @@
   services.xserver.libinput.enable = true;
 
 
+  
   # Define a user account. Don't forget to set a password with ‘passwd’.
   users.users.leticia = {
     isNormalUser = true;
     extraGroups = [ "wheel" ]; # Enable ‘sudo’ for the user.
   };
-  users.users.guest = {
-    isNormalUser = true;
-  };
 
 
   # List packages installed in system profile. To search, run:
   # $ nix search wget
+    nixpkgs.config.allowUnfree = true;
     environment.systemPackages = with pkgs; [
       wget
       vim 
       nano
-      firefox
-      papirus-icon-theme
-      arc-theme
       geany
       libreoffice
-      chromium
+      firefox
+      neofetch
+      papirus-icon-theme
+      arc-theme
       pkgs.gnome3.gnome-shell-extensions
       pkgs.gnome3.gnome-tweaks
+      vscode
+      python3
+      gcc
+      openjdk
+
+     # Para o trabalho de IHC
+     emacs
+     bluefish
     ];
 
 
