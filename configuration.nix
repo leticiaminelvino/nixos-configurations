@@ -93,10 +93,6 @@
       python3
       gcc
       openjdk
-
-     # Para o trabalho de IHC
-     emacs
-     bluefish
     ];
 
 
